@@ -42,7 +42,7 @@ public class CountryService {
     /**
      * Метод сбора номеров по странам
      */
-    public void getCountryNumbers() {
+    public Result getCountryNumbers() {
         try {
             CountryListResponse countryListResponse = getCountryList();
             FreePhoneListResponse freePhoneListResponse = getFreePhones();
@@ -65,8 +65,11 @@ public class CountryService {
             try (PrintWriter out = new PrintWriter(new FileWriter(KeepCodeConstant.RESULT_FILE_PATH))) {
                 out.write(GSON.toJson(result));
             }
+
+            return result;
         } catch (IOException e) {
             LOG.error(e.getMessage(), e);
+            return null;
         }
     }
 
