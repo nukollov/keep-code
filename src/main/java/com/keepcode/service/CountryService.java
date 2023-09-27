@@ -41,6 +41,8 @@ public class CountryService {
 
     /**
      * Метод сбора номеров по странам
+     *
+     * @return результат сбора данных
      */
     public Result getCountryNumbers() {
         try {

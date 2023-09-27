@@ -8,11 +8,9 @@ import org.junit.jupiter.api.Test;
 
 public class CountryServiceTest {
 
-    private final CountryService service = new CountryService(KeepCodeConstant.Url.API_URL);
-
     @Test
     void getCountryNumbersSBSuccess() {
-        Result result = service.getCountryNumbers();
+        Result result = new CountryService(KeepCodeConstant.Url.API_URL).getCountryNumbers();
 
         Assertions.assertNotNull(result);
     }
