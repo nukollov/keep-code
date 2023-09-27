@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n"/>
+        </Console>
+        <RollingFile name="app" fileName="logs/app.log" filePattern="logs_arch/%d{yy-MM-dd}/app.log.gz">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} %-5level - %msg%n</Pattern>
+            </PatternLayout>
+            <CronTriggeringPolicy schedule="0 0 0 * * ?" evaluateOnStartup="true"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="console"/>
+        </Root>
+        <Logger name="com.keepcode" level="info" additivity="false">
+            <AppenderRef ref="app"/>
+        </Logger>
+    </Loggers>
+</Configuration>
